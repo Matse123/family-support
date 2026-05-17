@@ -1,38 +1,32 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@fontsource-variable/plus-jakarta-sans";
-@import "@fontsource-variable/nunito-sans";
+@import "@fontsource-variable/playfair-display";
+@import "@fontsource-variable/mulish";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: 'Plus Jakarta Sans Variable', sans-serif;
-  --font-sans: 'Nunito Sans Variable', sans-serif;
+  --font-heading: 'Playfair Display Variable', Georgia, serif;
+  --font-sans:    'Mulish Variable', system-ui, sans-serif;
 
-  --color-primary:           #4BA661;
-  --color-primary-dark:      #1B4332;
-  --color-primary-light:     #88D498;
-  --color-primary-50:        #F0FAF3;
-  --color-primary-100:       #D6F0DC;
-  --color-neutral:           #F9F7F2;
-  --color-neutral-dark:      #2D2D2D;
+  /* Brand — gedämpft, warm */
+  --color-brand:        #4A7260;   /* Sage-Grün */
+  --color-brand-light:  #7BA898;
+  --color-brand-dark:   #2D4A3E;
+  --color-brand-muted:  #EDF2F0;
 
-  --color-background: #FFFFFF;
-  --color-foreground: #1B1B1B;
-  --color-muted:      #6B7280;
-  --color-border:     #E8E8E8;
-  --color-card:       #FFFFFF;
-
-  --radius-sm:  0.375rem;
-  --radius-md:  0.75rem;
-  --radius-lg:  1rem;
-  --radius-xl:  1.5rem;
-  --radius-2xl: 2rem;
-  --radius-full: 9999px;
+  /* Neutrale Töne */
+  --color-bg:           #FAFAF8;
+  --color-bg-warm:      #F5F2ED;
+  --color-surface:      #FFFFFF;
+  --color-border:       #E8E4DE;
+  --color-text:         #1A1915;
+  --color-muted:        #6E6B63;
+  --color-subtle:       #A8A49C;
 }
 
 @layer base {
-  * {
+  *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -40,18 +34,25 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    color: var(--color-muted);
   }
 }

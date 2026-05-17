@@ -1,107 +1,95 @@
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight, BookOpen, Heart, Home, MessageCircle, Smile, Users } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
 
 const services = [
   {
-    icon: BookOpen,
+    num: '01',
     title: 'Fortbildungen',
-    description: 'Regelmäßige Fortbildungen zu aktuellen wissenschaftlichen Erkenntnissen rund um Pflege- und Adoptivkinder — praxisnah und fundiert.',
-    color: '#4BA661',
-    bg: '#F0FAF3',
+    description:
+      'Regelmäßige Fortbildungen zu aktuellen wissenschaftlichen Erkenntnissen rund um Pflege- und Adoptivkinder — praxisnah und fundiert. Auf Orts- und Landesebene.',
   },
   {
-    icon: MessageCircle,
+    num: '02',
     title: 'Krisengespräche',
-    description: 'In schwierigen Situationen stehen wir Ihnen mit erfahrenen Fachkräften zur Seite — einfühlsam, vertraulich und lösungsorientiert.',
-    color: '#1B4332',
-    bg: '#E8F5ED',
+    description:
+      'In schwierigen Situationen stehen wir Ihnen mit erfahrenen Fachkräften zur Seite — einfühlsam, vertraulich und lösungsorientiert.',
   },
   {
-    icon: Home,
-    title: 'Gespräche in Jugendämtern',
-    description: 'Wir begleiten und unterstützen Pflege- und Adoptivfamilien bei Gesprächen mit Jugendämtern und Behörden.',
-    color: '#4BA661',
-    bg: '#F0FAF3',
+    num: '03',
+    title: 'Begleitung bei Jugendämtern',
+    description:
+      'Wir begleiten und unterstützen Pflege- und Adoptivfamilien bei Gesprächen mit Jugendämtern und Behörden — kompetent und an Ihrer Seite.',
   },
   {
-    icon: Users,
-    title: 'Gegenseitige Unterstützung',
-    description: 'Pflege- und Adoptiveltern schließen sich zusammen, um diese verantwortungsvolle Arbeit gemeinsam zu meistern.',
-    color: '#1B4332',
-    bg: '#E8F5ED',
+    num: '04',
+    title: 'Gruppenarbeit & Vernetzung',
+    description:
+      'Pflege- und Adoptiveltern tauschen sich aus, unterstützen einander und wachsen gemeinsam. Unsere Gruppen bieten Halt und Gemeinschaft.',
   },
   {
-    icon: Heart,
-    title: 'Kindeswohl im Mittelpunkt',
-    description: 'Alles dreht sich um einen Leitspruch: Kindern eine Zukunft geben! Stets das Kindeswohl im Blick — in jeder Entscheidung.',
-    color: '#4BA661',
-    bg: '#F0FAF3',
+    num: '05',
+    title: 'Fachtagungen',
+    description:
+      'Wir organisieren Fachtagungen, bei denen aktuelle Themen aus dem Pflege- und Adoptionswesen mit Expert:innen diskutiert werden.',
   },
   {
-    icon: Smile,
-    title: 'Trauma & Biografie',
-    description: 'Kinder, die Trennungen und Beziehungsabbrüche erlebt haben, erhalten gezielte Unterstützung beim Aufarbeiten traumatischer Erlebnisse.',
-    color: '#1B4332',
-    bg: '#E8F5ED',
+    num: '06',
+    title: 'Politische Interessensvertretung',
+    description:
+      'Der Landesverband setzt sich für die Rechte von Pflege- und Adoptivfamilien auf politischer Ebene ein — damit sich etwas ändert.',
   },
 ]
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  }),
-}
 
 export function Services() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section id="leistungen" className="py-24 bg-white" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <p className="text-sm font-bold tracking-widest text-[#4BA661] uppercase mb-3">Unsere Services</p>
-          <h2 className="font-heading text-4xl md:text-5xl text-[#1B4332] mb-5">Wie wir helfen</h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-lg">
-            Von der ersten Anfrage bis zur dauerhaften Begleitung — wir sind immer für Sie da.
-          </p>
-        </motion.div>
+    <section id="leistungen" className="py-32 bg-[#F5F2ED]" ref={ref}>
+      <div className="max-w-6xl mx-auto px-8">
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Header */}
+        <div className="grid md:grid-cols-12 gap-16 mb-20">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            className="md:col-span-3"
+          >
+            <p className="text-xs tracking-[0.2em] uppercase text-[#A8A49C] mt-2">Was bieten wir</p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.1 }}
+            className="md:col-span-9"
+          >
+            <h2 className="font-heading text-5xl md:text-6xl text-[#1A1915] leading-tight">
+              Alles dreht sich um<br />
+              <em className="italic text-[#4A7260]">einen Leitspruch.</em>
+            </h2>
+          </motion.div>
+        </div>
+
+        {/* Liste */}
+        <div className="divide-y divide-[#E8E4DE]">
           {services.map((s, i) => (
             <motion.div
-              key={s.title}
-              custom={i}
-              variants={fadeUp}
-              initial="hidden"
-              animate={inView ? 'visible' : 'hidden'}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group rounded-2xl p-6 border border-gray-100 bg-white shadow-sm hover:shadow-lg transition-shadow cursor-pointer"
+              key={s.num}
+              initial={{ opacity: 0, y: 16 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.08, duration: 0.6 }}
+              className="grid md:grid-cols-12 gap-8 py-10 group"
             >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ backgroundColor: s.bg }}
-              >
-                <s.icon size={22} style={{ color: s.color }} />
+              <div className="md:col-span-3 flex items-start gap-6">
+                <span className="text-xs text-[#A8A49C] tracking-widest mt-1">{s.num}</span>
+                <h3 className="font-heading text-2xl text-[#1A1915]">{s.title}</h3>
               </div>
-              <h3 className="font-heading text-xl text-[#1B4332] mb-2">{s.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">{s.description}</p>
-              <a
-                href="#kontakt"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4BA661] group-hover:gap-3 transition-all"
-              >
-                Mehr erfahren <ArrowRight size={14} />
-              </a>
+              <p className="md:col-span-7 text-[#6E6B63] leading-relaxed self-center">
+                {s.description}
+              </p>
+              <div className="md:col-span-2 flex items-center justify-end">
+                <span className="text-[#4A7260] text-xl opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </div>
             </motion.div>
           ))}
         </div>

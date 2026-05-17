@@ -14,56 +14,53 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20)
+    const handler = () => setScrolled(window.scrollY > 30)
     window.addEventListener('scroll', handler)
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.1 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-[#FAFAF8]/95 backdrop-blur-sm border-b border-[#E8E4DE]' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-full bg-[#4BA661] flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth={2}>
-              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
-          </div>
-          <span className="font-heading font-bold text-xl text-[#1B4332]">LV PA Thüringen</span>
+      <div className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#" className="font-heading text-xl text-[#1A1915] tracking-wide">
+          LV PA Thüringen
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Nav */}
+        <nav className="hidden md:flex items-center gap-10">
           {navLinks.map(link => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-semibold text-[#2D2D2D] hover:text-[#4BA661] transition-colors"
+              className="text-sm text-[#6E6B63] hover:text-[#1A1915] transition-colors tracking-wide"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
+        {/* CTA */}
         <a
           href="#kontakt"
-          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[#4BA661] text-white text-sm font-bold hover:bg-[#1B4332] transition-colors"
+          className="hidden md:inline-flex items-center text-sm text-[#4A7260] border-b border-[#4A7260] pb-px hover:text-[#2D4A3E] hover:border-[#2D4A3E] transition-colors tracking-wide"
         >
-          Kontakt
+          Kontakt aufnehmen
         </a>
 
+        {/* Mobile */}
         <button
-          className="md:hidden text-[#1B4332]"
+          className="md:hidden text-[#1A1915]"
           onClick={() => setMenuOpen(v => !v)}
-          aria-label="Menü öffnen"
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
@@ -73,16 +70,16 @@ export function Header() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-[#FAFAF8] border-t border-[#E8E4DE] overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-8 py-6 flex flex-col gap-5">
               {navLinks.map(link => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="text-base font-semibold text-[#2D2D2D] hover:text-[#4BA661] transition-colors"
+                  className="text-base text-[#6E6B63] hover:text-[#1A1915] transition-colors"
                 >
                   {link.label}
                 </a>
@@ -90,9 +87,9 @@ export function Header() {
               <a
                 href="#kontakt"
                 onClick={() => setMenuOpen(false)}
-                className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#4BA661] text-white font-bold hover:bg-[#1B4332] transition-colors"
+                className="text-sm text-[#4A7260] border-b border-[#4A7260] pb-px w-fit"
               >
-                Kontakt
+                Kontakt aufnehmen
               </a>
             </div>
           </motion.div>
