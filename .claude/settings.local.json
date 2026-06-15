@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(cd:*)",
+      "WebFetch(domain:www.lv-pa-thueringen.de)",
+      "Bash(npm install:*)"
+    ]
+  }
+}

@@ -1,19 +1,60 @@
+'use client'
+
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const vorstand = [
-  { role: 'Vorsitzende', name: 'Vera Schade', tel: '03634 – 622 756' },
-  { role: 'Stellv. Vorsitzende', name: 'Elke Maroldt', tel: '03634 – 609 171' },
+  { role: 'Vorstand', name: 'Alexandra Huth', tel: '0175 4181348' },
+  { role: 'Stellvertretung', name: 'Elke Marold', tel: '01575 0109536' },
+  { role: 'Stellvertretung', name: 'Wolfram Staufenbiel', tel: '0171 3333597' },
+  { role: 'Kasse', name: 'Kathrin Voigt', tel: '0177 8256084' },
+  { role: 'Beisitzerin', name: 'Mary Ann Knabe', tel: '' },
+  { role: 'Beisitzerin', name: 'Wiebke Eis', tel: '' },
+  { role: 'Beisitzerin', name: 'Christina Vogelbacher', tel: '' },
+  { role: 'Beisitzerin', name: 'Corinna Vonhof', tel: '' },
+  { role: 'Beisitzer', name: 'Heiko Mäder-Höhn', tel: '' },
+  { role: 'Beisitzer', name: 'Peggy und Udo Reimann', tel: '' },
+  { role: 'Beisitzer', name: 'Friedemann Göppel', tel: '' },
 ]
 
 export function Contact() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSent(true)
+    setLoading(true)
+    setError('')
+
+    const form = e.currentTarget
+    const data = {
+      vorname: (form.elements.namedItem('vorname') as HTMLInputElement).value,
+      nachname: (form.elements.namedItem('nachname') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      anliegen: (form.elements.namedItem('anliegen') as HTMLSelectElement).value,
+      nachricht: (form.elements.namedItem('nachricht') as HTMLTextAreaElement).value,
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (res.ok) {
+        setSent(true)
+      } else {
+        setError('Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.')
+      }
+    } catch {
+      setError('Leider ist ein Fehler aufgetreten. Bitte prüfen Sie Ihre Internetverbindung.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -54,8 +95,8 @@ export function Contact() {
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-[#A8A49C] mb-4">Adresse</p>
               <p className="text-[#6E6B63] text-sm leading-relaxed">
-                Vorderstraße 76<br />
-                99610 Wenigensömmern
+                Lessingplatz 10<br />
+                99631 Weißensee/ OT Schönstedt
               </p>
             </div>
             <div>
@@ -71,7 +112,7 @@ export function Contact() {
                 <div key={v.name} className="mb-4">
                   <p className="text-[#A8A49C] text-xs mb-0.5">{v.role}</p>
                   <p className="text-[#1A1915] text-sm">{v.name}</p>
-                  <p className="text-[#6E6B63] text-xs">{v.tel}</p>
+                  {v.tel && <p className="text-[#6E6B63] text-xs">{v.tel}</p>}
                 </div>
               ))}
             </div>
@@ -157,11 +198,16 @@ export function Contact() {
                   </label>
                 </div>
 
+                {error && (
+                  <p className="text-xs text-red-600 leading-relaxed">{error}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="text-sm text-[#FAFAF8] bg-[#4A7260] px-8 py-4 rounded-full hover:bg-[#2D4A3E] transition-colors tracking-wide"
+                  disabled={loading}
+                  className="text-sm text-[#FAFAF8] bg-[#4A7260] px-8 py-4 rounded-full hover:bg-[#2D4A3E] transition-colors tracking-wide disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Nachricht senden
+                  {loading ? 'Wird gesendet …' : 'Nachricht senden'}
                 </button>
               </form>
             )}

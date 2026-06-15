@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -6,7 +8,7 @@ const navLinks = [
   { label: 'Wer sind wir', href: '#ueber-uns' },
   { label: 'Was bieten wir', href: '#leistungen' },
   { label: 'Pflegefamilie werden', href: '#pflegefamilie' },
-  { label: 'Aktuelles', href: '#aktuelles' },
+  { label: 'Aktuelles', href: '/aktuelles' },
 ]
 
 export function Header() {
@@ -30,7 +32,7 @@ export function Header() {
     >
       <div className="max-w-6xl mx-auto px-8 py-5 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="font-heading text-xl text-[#1A1915] tracking-wide">
+        <a href="/" className="font-heading text-xl text-[#1A1915] tracking-wide">
           LV PA Thüringen
         </a>
 
