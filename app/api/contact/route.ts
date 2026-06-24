@@ -25,8 +25,8 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey)
 
     const { data, error } = await resend.emails.send({
-      from: 'LV PA Thüringen Website <onboarding@resend.dev>',
-      to: 'mattismerten03@gmail.com',
+      from: 'webseite@lv-pa-thueringen.de',
+      to: 'landesverband.pflege.und.adoptivfamilien@web.de',
       replyTo: email,
       subject: `Neue Nachricht: ${anliegen || 'Kontaktformular'} – ${vorname} ${nachname}`,
       text: `Name: ${vorname} ${nachname}

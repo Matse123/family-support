@@ -5,7 +5,7 @@ import { motion, useInView } from 'framer-motion'
 
 const vorstand = [
   { role: 'Vorsitzende', name: 'Alexandra Huth', tel: '0175 4181348' },
-  { role: 'Stellvertretung', name: 'Elke Marold', tel: '0157 0109536' },
+  { role: 'Stellvertretung', name: 'Elke Marold', tel: '0157 50109536' },
   { role: 'Stellvertretung', name: 'Wolfram Staufenbiel', tel: '0171 3333597' },
   { role: 'Kasse', name: 'Kathrin Voigt', tel: '0177 8256084' },
   { role: 'Beisitzerin', name: 'Mary Ann Knabe', tel: '' },
@@ -103,7 +103,6 @@ export function Contact() {
             </div>
             <div>
               <p className="text-xs tracking-[0.2em] uppercase text-[#A8A49C] mb-4">Erreichbarkeit</p>
-              <a href="tel:+4915751019536" className="block text-[#1A1915] text-sm hover:text-[#4A7260] transition-colors mb-1">01575 1019536</a>
               <a href="mailto:landesverband.pflege.und.adoptivfamilien@web.de" className="text-[#1A1915] text-xs hover:text-[#4A7260] transition-colors break-all leading-relaxed">
                 landesverband.pflege.und.<br />adoptivfamilien@web.de
               </a>
