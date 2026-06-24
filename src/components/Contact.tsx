@@ -48,7 +48,9 @@ export function Contact() {
       if (res.ok) {
         setSent(true)
       } else {
-        setError('Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.')
+        const body = await res.json().catch(() => ({}))
+        const detail = body?.detail ? ` (${body.detail})` : ''
+        setError(`Leider ist ein Fehler aufgetreten${detail}. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.`)
       }
     } catch {
       setError('Leider ist ein Fehler aufgetreten. Bitte prüfen Sie Ihre Internetverbindung.')
