@@ -4,8 +4,8 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 
 const vorstand = [
-  { role: 'Vorstand', name: 'Alexandra Huth', tel: '0175 4181348' },
-  { role: 'Stellvertretung', name: 'Elke Marold', tel: '01575 0109536' },
+  { role: 'Vorsitzende', name: 'Alexandra Huth', tel: '0175 4181348' },
+  { role: 'Stellvertretung', name: 'Elke Marold', tel: '0157 0109536' },
   { role: 'Stellvertretung', name: 'Wolfram Staufenbiel', tel: '0171 3333597' },
   { role: 'Kasse', name: 'Kathrin Voigt', tel: '0177 8256084' },
   { role: 'Beisitzerin', name: 'Mary Ann Knabe', tel: '' },

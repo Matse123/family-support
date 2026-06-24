@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import familyImg from '@/assets/familiy.jpeg'
 
 export function About() {
   const ref = useRef(null)
@@ -80,14 +81,9 @@ export function About() {
               className="rounded-2xl overflow-hidden aspect-[16/7]"
             >
               <img
-                src="https://picsum.photos/seed/about-warm/1200/525"
+                src={familyImg.src}
                 alt="Pflege- und Adoptivfamilien"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  const t = e.currentTarget
-                  t.style.display = 'none'
-                  t.parentElement!.style.background = 'linear-gradient(160deg, #EDF2F0, #C5D8D1)'
-                }}
               />
             </motion.div>
           </div>

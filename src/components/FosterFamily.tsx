@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import homeImg from '@/assets/home.jpeg'
 
 const zielgruppen = [
   'Pflege- und Adoptivfamilien',
@@ -63,14 +64,9 @@ export function FosterFamily() {
             className="rounded-2xl overflow-hidden aspect-[3/4]"
           >
             <img
-              src="https://picsum.photos/seed/foster-soft/600/800"
+              src={homeImg.src}
               alt="Familie"
               className="w-full h-full object-cover"
-              onError={(e) => {
-                const t = e.currentTarget
-                t.style.display = 'none'
-                t.parentElement!.style.background = 'linear-gradient(160deg, #EDF2F0, #C5D8D1)'
-              }}
             />
           </motion.div>
 
@@ -94,7 +90,7 @@ export function FosterFamily() {
               transition={{ delay: 0.7 }}
             >
               <a
-                href="#kontakt"
+                href="/#kontakt"
                 className="inline-flex text-sm text-[#FAFAF8] bg-[#4A7260] px-7 py-3.5 rounded-full hover:bg-[#2D4A3E] transition-colors tracking-wide"
               >
                 Beratungsgespräch anfragen

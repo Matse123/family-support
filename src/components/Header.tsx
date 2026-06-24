@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Wer sind wir', href: '#ueber-uns' },
-  { label: 'Was bieten wir', href: '#leistungen' },
-  { label: 'Pflegefamilie werden', href: '#pflegefamilie' },
+  { label: 'Wer sind wir', href: '/#ueber-uns' },
+  { label: 'Was bieten wir', href: '/#leistungen' },
+  { label: 'Pflegefamilie werden', href: '/#pflegefamilie' },
   { label: 'Aktuelles', href: '/aktuelles' },
 ]
 
@@ -51,7 +51,7 @@ export function Header() {
 
         {/* CTA */}
         <a
-          href="#kontakt"
+          href="/#kontakt"
           className="hidden md:inline-flex items-center text-sm text-[#4A7260] border-b border-[#4A7260] pb-px hover:text-[#2D4A3E] hover:border-[#2D4A3E] transition-colors tracking-wide"
         >
           Kontakt aufnehmen
@@ -87,7 +87,7 @@ export function Header() {
                 </a>
               ))}
               <a
-                href="#kontakt"
+                href="/#kontakt"
                 onClick={() => setMenuOpen(false)}
                 className="text-sm text-[#4A7260] border-b border-[#4A7260] pb-px w-fit"
               >

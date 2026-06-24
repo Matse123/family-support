@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import landingImg from '@/assets/landing.jpeg'
 
 export function Hero() {
   return (
@@ -37,14 +38,9 @@ export function Hero() {
             className="rounded-2xl overflow-hidden aspect-[4/3]"
           >
             <img
-              src="https://picsum.photos/seed/family-warm/800/600"
+              src={landingImg.src}
               alt="Familie"
               className="w-full h-full object-cover"
-              onError={(e) => {
-                const t = e.currentTarget
-                t.style.display = 'none'
-                t.parentElement!.style.background = 'linear-gradient(160deg, #EDF2F0 0%, #C5D8D1 100%)'
-              }}
             />
           </motion.div>
 
@@ -60,13 +56,13 @@ export function Hero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-start">
               <a
-                href="#kontakt"
+                href="/#kontakt"
                 className="text-sm text-[#FAFAF8] bg-[#4A7260] px-7 py-3.5 rounded-full hover:bg-[#2D4A3E] transition-colors tracking-wide"
               >
                 Beratung anfragen
               </a>
               <a
-                href="#ueber-uns"
+                href="/#ueber-uns"
                 className="text-sm text-[#4A7260] border-b border-[#4A7260] pb-px hover:text-[#2D4A3E] hover:border-[#2D4A3E] transition-colors tracking-wide self-center"
               >
                 Mehr erfahren

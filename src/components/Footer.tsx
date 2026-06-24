@@ -34,7 +34,7 @@ export function Footer() {
 
         <div className="md:col-span-12 border-t border-[#E8E4DE] pt-6 flex flex-col sm:flex-row justify-between gap-2">
           <p className="text-xs text-[#A8A49C]">© 2026 Landesverband der Pflege- und Adoptivfamilien Thüringen e.V.</p>
-          <p className="text-xs text-[#A8A49C]">Lessingplatz 10 · 99631 Weißensee/ OT Schönstedt · 01575 1019536</p>
+          <p className="text-xs text-[#A8A49C]">Lessingplatz 10 · 99631 Weißensee/ OT Schönstedt </p>
         </div>
       </div>
     </footer>
