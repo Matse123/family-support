@@ -68,6 +68,7 @@ export function Services() {
             <h2 className="font-heading text-5xl md:text-6xl text-[#1A1915] leading-tight">
               Alles dreht sich um<br />
               <em className="italic text-[#4A7260]">einen Leitspruch.</em>
+              - Kindern eine Zukunft geben
             </h2>
           </motion.div>
         </div>
